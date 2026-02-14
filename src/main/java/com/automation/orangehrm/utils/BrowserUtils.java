@@ -18,6 +18,12 @@ public class BrowserUtils {
         File source = ts.getScreenshotAs(OutputType.FILE);
         String destination = System.getProperty("user.dir") + "/screenshots/" + screenshotName + dateName + ".png";
         File finalDestination = new File(destination);
+
+        File screenshotDir = new File(System.getProperty("user.dir") + "/screenshots/");
+        if (!screenshotDir.exists()) {
+            screenshotDir.mkdirs();
+        }
+
         try {
             FileUtils.copyFile(source, finalDestination);
         } catch (IOException e) {

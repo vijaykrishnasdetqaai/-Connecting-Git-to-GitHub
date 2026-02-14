@@ -32,7 +32,12 @@ public class ExtentReportListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-        ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName());
+        String testName = result.getMethod().getMethodName();
+        Object[] params = result.getParameters();
+        if (params.length > 0) {
+            testName += " (" + params[0].toString() + ")";
+        }
+        ExtentTest extentTest = extent.createTest(testName);
         test.set(extentTest);
     }
 

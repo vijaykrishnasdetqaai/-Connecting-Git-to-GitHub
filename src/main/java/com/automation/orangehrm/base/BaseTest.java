@@ -2,6 +2,8 @@ package com.automation.orangehrm.base;
 
 import com.automation.orangehrm.utils.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,6 +15,7 @@ import org.testng.annotations.BeforeMethod;
 import java.time.Duration;
 
 public class BaseTest {
+    protected static final Logger logger = LogManager.getLogger(BaseTest.class);
     private static ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 
     public static WebDriver getDriver() {
@@ -21,11 +24,14 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
+        logger.info("Setting up WebDriver...");
         WebDriver driver = null;
         String browser = ConfigReader.getProperty("browser");
         String url = ConfigReader.getProperty("url");
 
         boolean headless = Boolean.parseBoolean(ConfigReader.getProperty("headless"));
+
+        logger.info("Browser: " + browser + ", Headless: " + headless);
 
         if (browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
@@ -48,6 +54,7 @@ public class BaseTest {
             driverThreadLocal.set(driver);
             getDriver().manage().window().maximize();
             getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            logger.info("Navigating to URL: " + url);
             getDriver().get(url);
         }
     }
@@ -55,6 +62,7 @@ public class BaseTest {
     @AfterMethod
     public void tearDown() {
         if (getDriver() != null) {
+            logger.info("Tearing down WebDriver...");
             getDriver().quit();
             driverThreadLocal.remove();
         }
