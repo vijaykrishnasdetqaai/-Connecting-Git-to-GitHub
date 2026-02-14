@@ -34,6 +34,17 @@ Run `testng.xml`
 
 ---
 
+## 🌿 Branching Strategy
+This project follows an industry-standard Git branching model:
+- **`main`**: Production-ready code.
+- **`develop`**: Main integration branch for features.
+- **`feature/*`**: New features (e.g., `feature/login-automation`).
+- **`fix/*`**: Bug fixes (e.g., `fix/dashboard-header-locator`).
+- **`hotfix/*`**: Urgent fixes for the `main` branch.
+- **`release/*`**: Preparation for a new production release.
+
+---
+
 ## 📂 Project Structure
 
 ```
