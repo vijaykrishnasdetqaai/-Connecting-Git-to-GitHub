@@ -9,6 +9,10 @@ release.properties
 # Logs
 *.log
 
+# Test Reports and Screenshots
+reports/
+screenshots/
+
 # IDE
 .idea/
 *.iml

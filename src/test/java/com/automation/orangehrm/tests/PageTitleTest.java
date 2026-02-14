@@ -9,7 +9,7 @@ public class PageTitleTest extends BaseTest {
     @Test(description = "Verify the login page title")
     public void testLoginPageTitle() {
         String expectedTitle = "OrangeHRM";
-        String actualTitle = driver.getTitle();
+        String actualTitle = getDriver().getTitle();
         Assert.assertEquals(actualTitle, expectedTitle, "Login page title should match");
     }
 }

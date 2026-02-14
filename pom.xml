@@ -15,6 +15,8 @@
         <testng.version>7.8.0</testng.version>
         <webdrivermanager.version>5.6.3</webdrivermanager.version>
         <log4j.version>2.22.0</log4j.version>
+        <extentreports.version>5.1.1</extentreports.version>
+        <commons-io.version>2.15.1</commons-io.version>
     </properties>
 
     <dependencies>
@@ -49,6 +51,20 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
+        </dependency>
+
+        <!-- Extent Reports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extentreports.version}</version>
+        </dependency>
+
+        <!-- Commons IO -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
         </dependency>
     </dependencies>
 
